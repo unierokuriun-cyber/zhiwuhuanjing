@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Web app generated and intermediate files
+node_modules/
+dist/
+work/
+test-results/
+playwright-report/
+*.tsbuildinfo
