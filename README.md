@@ -31,3 +31,7 @@ npm run preview -- --port 5175
 连接本仓库的开发分支，框架选择 Vite，构建命令 npm run build，输出目录 dist。深层路径需SPA fallback。公开部署不等于真实账号服务；新域名不会自动迁移旧域名的本地数据。
 
 功能、架构、设计系统、测试报告、部署方法和已知问题见 docs/；摄影来源与授权见 docs/image-sources.md。
+
+## 最新配图更新
+
+新增八种植物默认配图及按物种、内容类型区分的52篇社区示例帖配图，用户上传内容不替换。所有新生成配图仅为主题示意。Cloudflare 部署步骤见 docs/deployment-guide.md。

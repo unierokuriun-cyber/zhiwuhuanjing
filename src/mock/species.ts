@@ -1,4 +1,5 @@
-export const species = [
+import { botanicalPhotos, photoForSpecies } from "../services/plantPhotos";
+const legacySpecies = [
   {
     id: "monstera",
     name: "龟背竹",
@@ -48,6 +49,21 @@ export const species = [
     image: "/images/hero.webp",
     category: "实用性" as const,
   },
+];
+export const species = [
+  ...legacySpecies.map((s) => ({
+    ...s,
+    image: photoForSpecies(s.id) || s.image,
+  })),
+  ...botanicalPhotos
+    .filter((p) => !legacySpecies.some((s) => s.id === p.id))
+    .map((p) => ({
+      id: p.id,
+      name: p.name,
+      latin: p.latin,
+      image: photoForSpecies(p.id)!,
+      category: p.category,
+    })),
 ];
 export const stages = ["幼苗期", "生长期", "花期", "结果期", "休眠期"];
 export const goals = [

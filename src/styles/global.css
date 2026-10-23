@@ -538,14 +538,16 @@ h1 {
   overflow: hidden;
   background: #edf0e8;
 }
-.plant-photo img {
+.plant-photo img,
+.plant-photo .botanical-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 52%;
   transition: transform 0.4s;
 }
-.plant-card:hover img {
+.plant-card:hover img,
+.plant-card:hover .botanical-photo {
   transform: scale(1.04);
 }
 .location-label {
@@ -1501,7 +1503,8 @@ h1 {
     animation: none !important;
   }
   .plant-card:hover,
-  .plant-card:hover img {
+  .plant-card:hover img,
+  .plant-card:hover .botanical-photo {
     transform: none;
   }
 }
@@ -1560,6 +1563,7 @@ h1 {
   min-height: 570px;
 }
 .detail-visual > img,
+.detail-visual > .botanical-photo,
 .detail-visual > .image-fallback {
   width: 100%;
   height: 100%;
@@ -1795,6 +1799,7 @@ h1 {
   min-width: 0;
 }
 .form-photo > img,
+.form-photo > .botanical-photo,
 .form-photo > .image-fallback {
   width: 100%;
   height: 420px;
@@ -1919,7 +1924,8 @@ h1 {
     min-height: 0;
     height: 440px;
   }
-  .form-photo > img {
+  .form-photo > img,
+  .form-photo > .botanical-photo {
     height: 320px;
   }
   .form-fields {
@@ -1969,7 +1975,8 @@ h1 {
     padding: 20px;
     gap: 20px;
   }
-  .form-photo > img {
+  .form-photo > img,
+  .form-photo > .botanical-photo {
     height: 280px;
   }
   .form-grid {
@@ -2014,7 +2021,8 @@ h1 {
 .growth-entry h3 {
   line-height: 1.7;
 }
-.plant-photo img {
+.plant-photo img,
+.plant-photo .botanical-photo {
   transition: transform 0.4s;
 }
 .form-fields input:focus,
@@ -2068,7 +2076,8 @@ h1 {
   color: #5d7061;
   margin-bottom: 20px;
 }
-.care-hero > img {
+.care-hero > img,
+.care-hero > .botanical-photo {
   position: absolute;
   width: 50%;
   right: 0;
@@ -2229,7 +2238,8 @@ h1 {
   gap: 24px;
   margin-top: 24px;
 }
-.photo-upload > img {
+.photo-upload > img,
+.photo-upload > .botanical-photo {
   height: 320px;
   width: 100%;
   object-fit: contain;
@@ -2618,7 +2628,8 @@ button:disabled {
   .care-hero p {
     font-size: 10px;
   }
-  .care-hero > img {
+  .care-hero > img,
+  .care-hero > .botanical-photo {
     width: 45%;
     mask-image: linear-gradient(to right, transparent, black 70%);
   }
@@ -2653,7 +2664,8 @@ button:disabled {
   .care-two-columns {
     gap: 18px;
   }
-  .photo-upload > img {
+  .photo-upload > img,
+  .photo-upload > .botanical-photo {
     height: 260px;
   }
   .chat-card {
@@ -2766,7 +2778,8 @@ button:disabled {
   text-align: left;
   margin: 24px 0;
 }
-.partner-photo img {
+.partner-photo img,
+.partner-photo .botanical-photo {
   height: 56px;
   width: 56px;
   object-fit: cover;
@@ -3175,7 +3188,8 @@ progress::-webkit-progress-value {
   color: #65776b;
   line-height: 1.7;
 }
-.community-hero img {
+.community-hero img,
+.community-hero .botanical-photo {
   position: absolute;
   right: 0;
   top: 0;
@@ -3249,7 +3263,8 @@ progress::-webkit-progress-value {
   color: #26352b;
   text-decoration: none;
 }
-.channel-card img {
+.channel-card img,
+.channel-card .botanical-photo {
   width: 48px;
   height: 48px;
   object-fit: cover;
@@ -3338,6 +3353,7 @@ progress::-webkit-progress-value {
   color: #26352b;
 }
 .post-card-link > img,
+.post-card-link > .botanical-photo,
 .post-card-link > .community-image-fallback,
 .post-card-link > .image-fallback {
   width: 100%;
@@ -3446,7 +3462,8 @@ progress::-webkit-progress-value {
   border-radius: 0;
   border-bottom: 1px solid #edf0e9;
 }
-.community-right .channel-card img {
+.community-right .channel-card img,
+.community-right .channel-card .botanical-photo {
   width: 36px;
   height: 36px;
 }
@@ -3578,13 +3595,15 @@ progress::-webkit-progress-value {
 .post-image-grid.images-1 {
   grid-template-columns: minmax(0, 1fr);
 }
-.post-image-grid img {
+.post-image-grid img,
+.post-image-grid .botanical-photo {
   width: 100%;
   height: 260px;
   object-fit: cover;
   border-radius: 16px;
 }
-.post-image-grid.images-1 img {
+.post-image-grid.images-1 img,
+.post-image-grid.images-1 .botanical-photo {
   height: auto;
   max-height: 520px;
   object-fit: contain;
@@ -3766,7 +3785,8 @@ progress::-webkit-progress-value {
   position: relative;
   width: 30%;
 }
-.draft-images img {
+.draft-images img,
+.draft-images .botanical-photo {
   height: 100px;
   width: 100%;
   object-fit: cover;
@@ -3786,7 +3806,8 @@ progress::-webkit-progress-value {
   flex-wrap: wrap;
   margin-top: 24px;
 }
-.create-post-preview article > img {
+.create-post-preview article > img,
+.create-post-preview article > .botanical-photo {
   width: 100%;
   max-height: 350px;
   object-fit: contain;
@@ -4011,6 +4032,7 @@ progress::-webkit-progress-value {
     gap: 12px;
   }
   .post-card-link > img,
+  .post-card-link > .botanical-photo,
   .post-card-link > .community-image-fallback,
   .post-card-link > .image-fallback,
   .post-text-cover {
@@ -4037,7 +4059,8 @@ progress::-webkit-progress-value {
     gap: 0;
     margin-top: 20px;
   }
-  .channel-banner > img {
+  .channel-banner > img,
+  .channel-banner > .botanical-photo {
     height: 200px;
   }
   .channel-banner > div:last-child {
@@ -4071,7 +4094,8 @@ progress::-webkit-progress-value {
     font-size: 12px;
     gap: 5px;
   }
-  .post-image-grid img {
+  .post-image-grid img,
+  .post-image-grid .botanical-photo {
     height: 180px;
   }
   .post-related .community-feed {
@@ -4122,7 +4146,8 @@ progress::-webkit-progress-value {
   .community-upload {
     padding: 20px;
   }
-  .draft-images img {
+  .draft-images img,
+  .draft-images .botanical-photo {
     height: 80px;
   }
 }
@@ -4307,4 +4332,106 @@ textarea:focus-visible {
 .hero-label,
 .hero-copy p {
   color: #566859;
+}
+
+/* Eight botanical photographs share one compressed atlas; viewBox crops retain proportions. */
+.botanical-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.botanical-photo > image {
+  pointer-events: none;
+}
+.botanical-gallery {
+  margin: 40px 0 24px;
+  min-width: 0;
+}
+.botanical-gallery-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.botanical-gallery-card {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-card);
+  border: 1px solid #e4ebe0;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.botanical-gallery-card > .botanical-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+}
+.botanical-gallery-card > div {
+  padding: 16px;
+}
+.botanical-category {
+  font-size: 11px;
+  color: var(--color-readable-muted);
+}
+.botanical-gallery-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  margin: 8px 0;
+}
+.botanical-gallery-card p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-readable-muted);
+  margin: 0;
+}
+@media (hover: hover) {
+  .botanical-gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px #26352b12;
+  }
+}
+@media (max-width: 767px) {
+  .botanical-gallery-track {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 44%);
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x proximity;
+  }
+  .botanical-gallery-card {
+    scroll-snap-align: start;
+  }
+  .botanical-gallery-card > div {
+    padding: 12px;
+  }
+  .botanical-gallery-card p {
+    min-height: 40px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .botanical-gallery-card {
+    transition: none;
+  }
+}
+
+.candidate-list button > .botanical-photo {
+  width: 48px;
+  height: 64px;
+  border-radius: 10px;
+  flex: 0 0 48px;
+}
+.candidate-list button {
+  gap: 12px;
+}
+.candidate-list button > span {
+  flex: 1;
+  text-align: left;
 }

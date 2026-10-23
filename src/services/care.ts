@@ -45,6 +45,30 @@ const rules: Record<
     prune: "优先检查枯损叶，避免损伤生长点。",
     focus: "关注盆土干湿、排水与休眠变化。",
   },
+  pothos: {
+    light: "明亮散射光，避免突然曝晒。",
+    fertilize: "健康生长期依长势少量施肥，先检查根系与盆土。",
+    prune: "适度整理徒长枝，保留健康叶片。",
+    focus: "观察叶色、根系与藤蔓生长。",
+  },
+  "fiddle-leaf-fig": {
+    light: "稳定的明亮光照，逐步适应窗边环境。",
+    fertilize: "健康生长期按标签评估施肥，弱株先观察。",
+    prune: "修剪前确认枝条，避免频繁剪去健康大叶片。",
+    focus: "关注新叶、通风与环境稳定。",
+  },
+  "snake-plant": {
+    light: "明亮散射光，避免突然移动到强光处。",
+    fertilize: "生长缓慢时不盲目施肥，检查盆土排水。",
+    prune: "仅处理明确受损叶片，保护生长点。",
+    focus: "检查根部与实际盆土，避免持续潮湿。",
+  },
+  rosemary: {
+    light: "逐步适应充足日照，保持良好通风。",
+    fertilize: "先观察长势，不对弱株盲目增加肥料。",
+    prune: "轻剪健康嫩枝，避免大幅剪入无叶老枝。",
+    focus: "关注通风、日照与排水，避免积水。",
+  },
   monstera: {
     light: "明亮散射光，避开正午强烈直射。",
     fertilize: "生长期先观察长势，按标签低浓度使用，不对弱株盲目施肥。",
@@ -68,7 +92,7 @@ export function adviceFor(p: Plant, records: CareRecord[]) {
     ...rule,
     water:
       "未连接传感器，演示湿度不能作为浇水依据。" +
-      (p.speciesId === "haworthia"
+      (p.speciesId === "haworthia" || p.speciesId === "snake-plant"
         ? "检查实际盆土是否充分干燥及排水情况，再评估是否补水；休眠期尤其谨慎。"
         : "先触摸或检查实际盆土、盆重与排水，再决定是否浇水，不按固定天数盲目补水。"),
     fertilize:

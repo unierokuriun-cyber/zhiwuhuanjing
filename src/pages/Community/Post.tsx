@@ -86,7 +86,7 @@ export function PostPage() {
               )}
               <p className="form-note">
                 {p.source === "demo"
-                  ? "示例帖子 · 部分图片为通用植物摄影，不是作者的真实植株记录。"
+                  ? "示例帖子 · 配图为 AI 生成的主题示意，不是实际用户的植株记录或诊断依据。"
                   : "本地发布 · 仅在当前浏览器可见。"}
               </p>
               <div className="post-content">{p.content}</div>
