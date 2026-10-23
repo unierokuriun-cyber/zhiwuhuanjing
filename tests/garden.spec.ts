@@ -101,7 +101,7 @@ test("filters, saved task, routes, and notifications", async ({ page }) => {
   ).toBeVisible();
 });
 test("image failure provides accessible fallback", async ({ page }) => {
-  await page.route("**/images/monstera.webp", (route) => route.abort());
+  await page.route("**/images/botanical-atlas.webp", (route) => route.abort());
   await page.goto("/garden");
   await expect(
     page.getByRole("img", { name: "龟背竹，图片暂时无法加载" }),

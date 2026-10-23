@@ -24,6 +24,7 @@ import { getStorageError } from "../store/storage";
 import { PlantImage } from "../components/common/PlantImage";
 import { gardenService, type WeatherData } from "../services/garden";
 import { GardenChannelRecommendations } from "../components/community/Recommendations";
+import { BotanicalGallery } from "../components/garden/BotanicalGallery";
 const filters = ["全部植物", "客厅", "阳台", "书房"] as const;
 import { usePreferences } from "../store/preferences";
 export function Garden() {
@@ -241,7 +242,11 @@ export function Garden() {
             {visible.map((p) => (
               <Link to={`/plants/${p.id}`} key={p.id} className="plant-card">
                 <div className="plant-photo">
-                  <PlantImage src={p.image} alt={p.name} />
+                  <PlantImage
+                    speciesId={p.speciesId}
+                    src={p.image}
+                    alt={p.name}
+                  />
                   <span className="location-label">
                     <MapPin size={11} />
                     {p.location}
@@ -416,6 +421,7 @@ export function Garden() {
           </section>
         </aside>
       </div>
+      <BotanicalGallery />
       <footer className="garden-footer">
         <Leaf size={14} />
         <span>让每一份绿意，都有人陪伴。</span>

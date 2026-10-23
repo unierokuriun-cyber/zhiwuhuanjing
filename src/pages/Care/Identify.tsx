@@ -1,3 +1,4 @@
+import { PlantImage } from "../../components/common/PlantImage";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check, ScanLine } from "lucide-react";
@@ -100,6 +101,10 @@ export function Identify() {
                     aria-pressed={selected === r.id}
                     onClick={() => setSelected(r.id)}
                   >
+                    <PlantImage
+                      src={species.find((s) => s.id === r.id)!.image}
+                      alt={`${species.find((s) => s.id === r.id)!.name}演示候选照片`}
+                    />
                     <span>
                       <strong>
                         {species.find((s) => s.id === r.id)!.name}

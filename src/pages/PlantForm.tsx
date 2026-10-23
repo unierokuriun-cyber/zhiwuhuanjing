@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { ArrowLeft, Check, Leaf, Upload, Plus } from "lucide-react";
 import { useGarden } from "../store/garden";
 import { species, stages, goals } from "../mock/species";
@@ -9,6 +14,9 @@ import { getStorageError } from "../store/storage";
 export function PlantForm() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const initialSpecies =
+    species.find((s) => s.id === params.get("species")) || species[0];
   const plant = useGarden((s) => s.plants.find((p) => p.id === id));
   const add = useGarden((s) => s.addPlant);
   const edit = useGarden((s) => s.editPlant);
@@ -24,13 +32,13 @@ export function PlantForm() {
           image: plant.image,
         }
       : {
-          speciesId: "monstera",
+          speciesId: initialSpecies.id,
           nickname: "",
-          category: "观赏性",
+          category: initialSpecies.category,
           location: "客厅",
           stage: "生长期",
           goal: "保持健康",
-          image: species[0].image,
+          image: initialSpecies.image,
         },
   );
   const [error, setError] = useState("");
@@ -126,7 +134,11 @@ export function PlantForm() {
       </p>
       <form className="plant-form" onSubmit={save}>
         <section className="form-photo">
-          <PlantImage src={draft.image} alt="植物图片预览" />
+          <PlantImage
+            speciesId={draft.speciesId}
+            src={draft.image}
+            alt="植物图片预览"
+          />
           <div className="photo-controls">
             <label className="button secondary-button">
               <Upload size={16} /> 选择本地图片
@@ -152,7 +164,7 @@ export function PlantForm() {
           </div>
           <p>
             图片仅保存在当前浏览器 · 最大
-            5MB；三角梅、小番茄、薄荷的默认图为通用花园摄影
+            5MB；默认图片按植物品种匹配，上传的照片优先保留
           </p>
         </section>
         <section className="form-fields">

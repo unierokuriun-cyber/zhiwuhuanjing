@@ -23,8 +23,8 @@ export function PlantDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [remove, setRemove] = useState(false);
-  const events = useGarden(s=>s.companionEvents);
-  const deletePlant = useGarden(s=>s.deletePlant);
+  const events = useGarden((s) => s.companionEvents);
+  const deletePlant = useGarden((s) => s.deletePlant);
   const plant = useGarden((s) => s.plants.find((p) => p.id === id));
   const records = useGarden((s) => s.records).filter((r) => r.plantId === id);
   const recordCare = useGarden((s) => s.recordCare);
@@ -53,8 +53,12 @@ export function PlantDetail() {
     if (!kind || lock.current) return;
     lock.current = true;
     recordCare(plant!.id, kind, operation.current);
-    const saved = useGarden.getState().records.find(r=>r.id===operation.current);
-    setMessage(getStorageError() || `已记录${label}，获得 ${saved?.xp || 0} 点养护经验`);
+    const saved = useGarden
+      .getState()
+      .records.find((r) => r.id === operation.current);
+    setMessage(
+      getStorageError() || `已记录${label}，获得 ${saved?.xp || 0} 点养护经验`,
+    );
     setKind(null);
   }
   return (
@@ -76,7 +80,12 @@ export function PlantDetail() {
       </div>
       <div className="detail-grid">
         <section className="detail-visual">
-          <PlantImage src={plant.image} alt={plant.name} eager />
+          <PlantImage
+            speciesId={plant.speciesId}
+            src={plant.image}
+            alt={plant.name}
+            eager
+          />
           <span className="detail-photo-label">
             <MapPin size={14} />
             {plant.location} · {plant.category}
@@ -166,8 +175,17 @@ export function PlantDetail() {
           <Link to="/care" className="text-link">
             查看完整个性化养护建议 <ArrowUpRight size={16} />
           </Link>
-          <Link className="text-link" to={`/companion?plant=${plant.id}`}>查看这株植物的数字伙伴</Link>
-          {channelForSpecies(plant.speciesId) && <Link className="text-link" to={`/community/channels/${channelForSpecies(plant.speciesId)!.channelId}`}>到{channelForSpecies(plant.speciesId)!.name}频道交流</Link>}
+          <Link className="text-link" to={`/companion?plant=${plant.id}`}>
+            查看这株植物的数字伙伴
+          </Link>
+          {channelForSpecies(plant.speciesId) && (
+            <Link
+              className="text-link"
+              to={`/community/channels/${channelForSpecies(plant.speciesId)!.channelId}`}
+            >
+              到{channelForSpecies(plant.speciesId)!.name}频道交流
+            </Link>
+          )}
           <h3 className="care-action-title">记录今天的照顾</h3>
           <div className="care-actions">
             {actions.map((a) => (
@@ -210,7 +228,14 @@ export function PlantDetail() {
                   {new Date(r.at).toLocaleString("zh-CN")}
                 </time>
               </div>
-              {r.kind === "growth" && channelForSpecies(plant.speciesId) && <Link className="text-link" to={`/community/create?record=${encodeURIComponent(r.id)}`}>分享成长记录</Link>}
+              {r.kind === "growth" && channelForSpecies(plant.speciesId) && (
+                <Link
+                  className="text-link"
+                  to={`/community/create?record=${encodeURIComponent(r.id)}`}
+                >
+                  分享成长记录
+                </Link>
+              )}
               <span className="record-xp">+{r.xp} XP</span>
             </article>
           ))
@@ -221,8 +246,46 @@ export function PlantDetail() {
           </div>
         )}
       </section>
-      <button className="button secondary-button" onClick={()=>setRemove(true)}>删除植物档案</button>
-      {remove && <div className="modal-backdrop"><section className="care-dialog" role="dialog" aria-modal="true" aria-label="删除植物确认" onKeyDown={e=>{if(e.key==='Escape')setRemove(false);}}><h2>删除「{plant.nickname}」？</h2><p>将移除该植物的本地档案、养护记录、任务、聊天和伙伴成长数据。此操作无法恢复。</p><button className="button secondary-button" onClick={()=>setRemove(false)}>取消</button><button className="button" autoFocus onClick={()=>{deletePlant(plant.id);navigate('/garden');}}>确认删除</button></section></div>}
+      <button
+        className="button secondary-button"
+        onClick={() => setRemove(true)}
+      >
+        删除植物档案
+      </button>
+      {remove && (
+        <div className="modal-backdrop">
+          <section
+            className="care-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label="删除植物确认"
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setRemove(false);
+            }}
+          >
+            <h2>删除「{plant.nickname}」？</h2>
+            <p>
+              将移除该植物的本地档案、养护记录、任务、聊天和伙伴成长数据。此操作无法恢复。
+            </p>
+            <button
+              className="button secondary-button"
+              onClick={() => setRemove(false)}
+            >
+              取消
+            </button>
+            <button
+              className="button"
+              autoFocus
+              onClick={() => {
+                deletePlant(plant.id);
+                navigate("/garden");
+              }}
+            >
+              确认删除
+            </button>
+          </section>
+        </div>
+      )}
       {kind && (
         <div className="modal-backdrop" onClick={() => setKind(null)}>
           <section

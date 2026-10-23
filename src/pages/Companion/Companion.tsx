@@ -56,7 +56,7 @@ export function Companion() {
     <h2>{p.nickname}</h2>
     <p>{p.name} · {p.stage}</p>
     <div className="partner-photo">
-    <PlantImage src={p.image} alt={`${p.nickname}的档案照片`}/>
+    <PlantImage speciesId={p.speciesId} src={p.image} alt={`${p.nickname}的档案照片`}/>
     <div>现实中的你<small>{state.health}</small>
     </div>
     <Link to={`/plants/${p.id}`}>档案</Link>

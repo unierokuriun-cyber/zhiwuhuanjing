@@ -1,3 +1,4 @@
+import { PlantImage } from "../../components/common/PlantImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Sprout } from "lucide-react";
@@ -81,7 +82,12 @@ export function Community() {
                 探索阳台种植 <ArrowUpRight size={16} />
               </Link>
             </div>
-            <img src="/images/hero.webp" alt="绿意中的室内植物摄影" />
+            <PlantImage
+              className="community-hero-photo"
+              src="/images/botanical-atlas.webp#tomato"
+              alt="阳台上正在结果的小番茄"
+              eager
+            />
           </section>
           <div
             className="community-tabs"

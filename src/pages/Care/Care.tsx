@@ -1,3 +1,4 @@
+import { PlantImage } from "../../components/common/PlantImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -93,7 +94,13 @@ export function Care() {
             开始养护问答 <ArrowUpRight size={17} />
           </Link>
         </div>
-        <img src="/images/hero.webp" alt="室内植物摄影" />
+        <PlantImage
+          className="care-hero-photo"
+          src={p?.image || "/images/botanical-atlas.webp#mint"}
+          speciesId={p?.speciesId}
+          alt={p ? `${p.name}养护主题照片` : "薄荷养护主题照片"}
+          eager
+        />
       </section>
       <div className="simulation-note">
         演示模式 · 识别不分析照片，问答为规则生成，天气为固定示例。

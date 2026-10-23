@@ -1,3 +1,5 @@
+import { communityPostPhoto } from "../services/communityPhotos";
+import { photoForSpecies } from "../services/plantPhotos";
 import type {
   Channel,
   CommunityPost,
@@ -57,7 +59,7 @@ const definitions = [
     "其他观叶植物",
     "观赏性",
     "银皇后、橡皮树等观叶植物的日常观察。",
-    ["aglaonema", "rubber"],
+    ["aglaonema", "rubber", "fiddle-leaf-fig", "snake-plant"],
     ["观叶", "室内"],
   ],
   [
@@ -105,7 +107,7 @@ const definitions = [
     "其他香草与蔬菜",
     "实用性",
     "为你的餐桌添一抹亲手种下的绿意。",
-    ["herbs", "vegetables"],
+    ["herbs", "vegetables", "rosemary"],
     ["香草", "蔬菜"],
   ],
 ] as const;
@@ -117,11 +119,17 @@ export const mockChannels: Channel[] = definitions.map((d, i) => ({
   plantSpeciesIds: [...d[4]],
   tags: [...d[5]],
   cover:
-    d[0] === "monstera"
+    photoForSpecies(d[0]) ||
+    (d[0] === "foliage"
+      ? photoForSpecies("fiddle-leaf-fig")
+      : d[0] === "herbs"
+        ? photoForSpecies("rosemary")
+        : undefined) ||
+    (d[0] === "monstera"
       ? "/images/monstera.webp"
       : d[0] === "succulents"
         ? "/images/succulent.webp"
-        : "/images/hero.webp",
+        : "/images/hero.webp"),
   demoFollowers: 1200 + i * 187,
 }));
 const topics: Record<string, string[]> = {
@@ -161,12 +169,17 @@ export const mockPosts: CommunityPost[] = mockChannels.flatMap((c, i) =>
     postId: `demo-${c.channelId}-${j}`,
     authorId: `demo-author-${j}`,
     channelId: c.channelId,
-    plantSpeciesId: c.plantSpeciesIds[0],
+    plantSpeciesId:
+      c.channelId === "foliage"
+        ? j === 1
+          ? "fiddle-leaf-fig"
+          : "rubber"
+        : c.plantSpeciesIds[0],
     title:
       topics[c.channelId]?.[j] ||
       `${c.name} · ${["观察与养护入门", "遇到叶片变化怎么办", "记录今天的小小生长", "种植日常交流"][j]}`,
     content: body,
-    images: [c.cover],
+    images: [communityPostPhoto(c.channelId, j) || c.cover],
     tags: [c.name, ...c.tags],
     postType: (["养护攻略", "问题求助", "成长分享", "日常交流"] as const)[j],
     createdAt: `2026-10-${String(1 + ((i + j) % 7)).padStart(2, "0")}T02:00:00Z`,

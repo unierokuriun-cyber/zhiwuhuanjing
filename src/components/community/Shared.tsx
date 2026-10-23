@@ -59,7 +59,7 @@ export function CommunityPage({
       </header>
       <p className="community-demo">
         <UsersRound size={16} />
-        本地社区演示 · 示例作者与热度为 Mock；你的发帖和互动仅保存在当前浏览器。
+        本地社区演示 · 示例作者与热度为 Mock，示例帖子配图为 AI 生成；你的发帖和互动仅保存在当前浏览器。
       </p>
       {children}
     </div>
